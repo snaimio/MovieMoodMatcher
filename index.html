@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Lobster&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <title>Movie Mood Matcher 🎬</title>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a> 
+  
+  <div id="lightbox" class="lightbox-overlay">
+    <div class="lightbox-content">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <div id="lightbox-details" class="lightbox-details-grid">
+      </div>
+    </div>
+  </div>
+
+  <div id="logo-container">
+    <div id="logo">
+      <a href="#" title="Back to Home">
+        <img src="assets/images/logo.png" alt="Movie Mood Matcher Logo">
+      </a>
+    </div>
+    
+    <div class="social-icons">
+      <a href="https://dragonbit.com" class="social-icon" target="_blank" title="Visit Dragonbit" aria-label="Dragonbit"> 
+        <img src="assets/images/dragonbit-64.png" alt="Dragonbit Icon">
+      </a>
+      <a href="https://linkedin.com" class="social-icon" target="_blank" title="Visit LinkedIn" aria-label="LinkedIn">
+        <img src="assets/images/linkedin-64.png" alt="LinkedIn icon">
+      </a>
+      <a href="https://twitter.com" class="social-icon" target="_blank" title="Visit Twitter" aria-label="Twitter">
+        <img src="assets/images/twitter-64.png" alt="Twitter Icon">
+      </a>
+    </div>
+  </div>
+
+  <div id="hamburger">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <nav id="siteNav">
+    <a href="#" title="home">Home</a>
+    <a href="#trending" title="trending">Trending</a> 
+    <a href="#latest" title="latest">Latest</a>
+    <a href="#moods" title="moods">Moods</a>
+    <a href="#watchlist" title="watchlist">Watchlist</a>
+    <a href="#about" title="about">About</a>
+    <a href="#contact" title="contact">Contact</a>
+  </nav>
+
+  <main id="main" class="main-content">
+    <div id="grid">  
+      <header>
+        <div class="header-overlay">
+          <h1 class="limelight-regular header-title">What's your vibe right now?</h1>
+          <p class="lobster-regular header-subtitle">Don't just scroll for hours. Tell us how you feel and we'll find the perfect movie match for you.</p>
+        </div>
+      </header>
+      
+      <div id="trending">
+        <h2 class="section-title limelight-regular">Trending This Week</h2>
+        <div id="trending-grid" class="gallery-layout">
+          <div class="loading-msg">Loading trending movies...</div>
+        </div>
+      </div>
+      
+      <div id="latest">
+        <h2 class="section-title limelight-regular">Now Playing In Theaters</h2>
+        <div id="now-playing-grid" class="gallery-layout">
+          <div class="loading-msg">Loading now playing movies...</div>
+        </div>
+      </div>
+
+      <div id="moods">
+        <h2 class="section-title limelight-regular">Pick Your Mood</h2>
+        <div class="controls-container">
+          <div class="search-box">
+            <input type="text" id="txtSearch" placeholder="Search for a specific movie...">
+          </div>
+          <div class="mood-buttons">
+            <button class="mood-btn" data-mood="chill" aria-label="Show chill mood movies">
+              <i class="fas fa-cloud-sun"></i> Chill
+            </button>
+            <button class="mood-btn" data-mood="sad" aria-label="Show sad mood movies">
+              <i class="fas fa-tint"></i> Sad
+            </button>
+            <button class="mood-btn" data-mood="scared" aria-label="Show scary movies">
+              <i class="fas fa-ghost"></i> Scared
+            </button>
+            <button class="mood-btn" data-mood="funny" aria-label="Show funny movies">
+              <i class="fas fa-laugh"></i> Funny
+            </button>
+            <button class="mood-btn" data-mood="intense" aria-label="Show intense movies">
+              <i class="fas fa-fire"></i> Intense
+            </button>
+            <button class="mood-btn" data-mood="romantic" aria-label="Show romantic movies">
+              <i class="fas fa-heart"></i> Romantic
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="results">
+        <h2 class="section-title limelight-regular">Our Recommendations</h2>
+        <div id="results-grid" class="gallery-layout">
+          <div class="empty-state">
+            <i class="fas fa-film"></i>
+            <p>Select a mood or search for movies to see recommendations</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="watchlist">
+        <h2 class="section-title limelight-regular">
+          My Watchlist <span id="watchlist-count">(0)</span>
+        </h2>
+        
+        <div class="watchlist-controls">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="watched">Watched</button>
+          <button class="filter-btn" data-filter="unwatched">To Watch</button>
+          <button class="clear-btn" id="clearWatchlist">
+            <i class="fas fa-trash"></i> Clear All
+          </button>
+        </div>
+        
+        <div id="watchlist-stats" class="stats-grid">
+        </div>
+        
+        <div id="watchlist-grid" class="gallery-layout">
+          <div class="empty-state">
+            <i class="fas fa-bookmark"></i>
+            <p>Your watchlist is empty. Add some movies!</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="about">
+        <h2 class="section-title limelight-regular">About This Project</h2>
+        <div class="about-content">
+          <p><strong>Movie Mood Matcher</strong> is a lightweight web application that recommends movies based on the user's current emotional state. Instead of browsing endlessly, users receive personalized, mood-aligned suggestions within seconds, reducing decision fatigue and creating a more enjoyable viewing experience.</p>
+          <p><strong>The Tech Stack:</strong></p>
+          <ul class="tech-list">
+            <li><strong>Data:</strong> Real-time fetching from the <strong>TMDB API</strong> endpoints (Trending, Search, Discover).</li>
+            <li><strong>Persistence:</strong> Custom <strong>Local Storage</strong> implementation to save your personal Watchlist.</li>
+            <li><strong>Design:</strong> Responsive CSS Grid layout with a custom dark mode theme.</li>
+          </ul>
+          <p>This project was created as an educational purposes to demonstrate proficiency in <strong>DOM manipulation</strong>, <strong>3rd-party API usage</strong> and <strong> Local Storage implementation. </strong> </p>
+        </div>
+      </div>
+
+      <div id="contact">
+        <h2 class="section-title limelight-regular">Contact Us</h2>
+        <form class="contact-form" id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 Movie Mood Matcher. Movie data collected from TMDB.</p>
+      </footer>
+    </div> 
+  </main> 
+  <div id="notification-container"></div>
+
+  <script src="js/Movie.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -39,8 +39,8 @@
 ## 🚀 Setup & Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/snaimio/MovieMoodMatcher.git
-   cd MovieMoodMatcher
+   git clone https://github.com/snaimio/movie-mood-matcher.git
+   cd movie-mood-matcher
    ```
 2. Open `index.html` in your browser (or use VS Code Live Server).
 
